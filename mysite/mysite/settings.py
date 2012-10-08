@@ -1,3 +1,4 @@
+import platform
 # Django settings for mysite project.
 
 DEBUG = True
@@ -102,8 +103,13 @@ ROOT_URLCONF = 'mysite.urls'
 # Python dotted path to the WSGI application used by Django's runserver.
 WSGI_APPLICATION = 'mysite.wsgi.application'
 
+if platform.node() == 'testpoll':
+    dirs = '/var/www/polls/mysite/templates'
+else:
+    dirs = '/home/sandy/mysite/templates'
+
 TEMPLATE_DIRS = (
-    '/home/sandy/mysite/templates',
+    dirs,
     # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
