@@ -10,6 +10,7 @@ ADMINS = (
 
 MANAGERS = ADMINS
 
+# If you are using HEROKU comment out this dictionary
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
@@ -20,6 +21,9 @@ DATABASES = {
         'PORT': '',
     }
 }
+
+# Uncomment this line if you want to use HEROKU
+#DATABASES = {'default': dj_database_url.config(default='postgres://localhost')}
 
 # Local time zone for this installation. Choices can be found here:
 # http://en.wikipedia.org/wiki/List_of_tz_zones_by_name
@@ -103,10 +107,13 @@ ROOT_URLCONF = 'mysite.urls'
 # Python dotted path to the WSGI application used by Django's runserver.
 WSGI_APPLICATION = 'mysite.wsgi.application'
 
-if platform.node() == 'testpoll':
-    dirs = '/var/www/polls/mysite/templates'
-else:
+# If you are in your local environment,
+# use one path to templates, for all other
+# environments, use another
+if platform.node() == 'localhost':
     dirs = '/home/sandy/mysite/templates'
+else:
+    dirs = '/var/www/polls/mysite/templates'
 
 TEMPLATE_DIRS = (
     dirs,
