@@ -16,3 +16,11 @@ class Choice(models.Model):
     poll = models.ForeignKey(Poll)
     choice_text = models.CharField(max_length=200)
     votes = models.IntegerField()
+
+
+class PollManager(models.Manager):
+	def get_by_id(self, id):
+		self.filter(id=id)
+
+	def get_by_question(self, question):
+		self.filter(question=question)
