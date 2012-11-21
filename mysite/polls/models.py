@@ -19,8 +19,6 @@ class Choice(models.Model):
 
 
 class PollManager(models.Manager):
-	def get_by_id(self, id):
-		self.filter(id=id)
 
-	def get_by_question(self, question):
-		self.filter(question=question)
+	def get_by_poll(self, poll):
+		self.filter(poll=poll)
